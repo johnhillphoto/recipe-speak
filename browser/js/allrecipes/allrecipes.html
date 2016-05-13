@@ -1,0 +1,10 @@
+<div class="container">
+
+  <h3>All recipes</h3>
+
+  <div class="list-group">
+    <a ng-repeat="recipe in recipes" ui-sref="recipeDetail({id:recipe._id})" class="list-group-item">
+      {{recipe.name}}</a>
+  </div>
+
+</div>

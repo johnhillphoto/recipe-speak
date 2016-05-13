@@ -8,7 +8,6 @@ app.config(function($stateProvider){
 				recipes: function (RecipesFactory) {
 					return RecipesFactory.getAll();
 				}
-
 			}//end resolve
 		});
 });

@@ -1,8 +1,8 @@
 app.factory('RecipesFactory',function($http){
 
-  function sendData (result) {
-    return result.data;
-  }
+  // function sendData (result) {
+  //   return result.data;
+  // }
 
 	return{
 		getAll : function(){
@@ -12,15 +12,15 @@ app.factory('RecipesFactory',function($http){
 			},function(err){
 				return err;
 			});
+		},
+		getRecipe : function(id){
+			return $http.get('/api/recipes/'+id)
+			.then(function(result){
+				return result.data;
+			},function(err){
+				return err;
+			});
 		}
-		// fetch : function(id){
-		// 	return $http.get('/api/experiences/'+id)
-		// 	.then(function(result){
-		// 		return result.data;
-		// 	},function(err){
-		// 		return err;
-		// 	});
-		// },
 		// add : function(data){
 		// 	return $http.post('/api/experiences/',data)
 		// 	.then(function(newExp){

@@ -12,6 +12,13 @@ router.get('/', function(req,res, next){
   });
 });
 
+router.get('/:id', function(req,res, next){
+  Recipe.findById(req.params.id)
+  .then(function(recipe){
+    res.status(200).json(recipe);
+  });
+});
+
 router.post('/', function(req,res, next){
   Recipe.create(res.body)
   .then(function(recipe){

@@ -3,6 +3,8 @@ $scope.textToSay = "Waiting....";
 
 $scope.clickMe = function(){
   responsiveVoice.speak($scope.textToSay, "Russian Female", {volume: 1});
+  // var msg = new SpeechSynthesisUtterance('Hello World');
+  //   window.speechSynthesis.speak(msg);
 };
 // // responsiveVoice.setDefaultVoice("US English Female");
 // responsiveVoice.AddEventListener("OnLoad",function(){
