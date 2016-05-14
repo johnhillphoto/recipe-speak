@@ -3,107 +3,126 @@ $scope.recipe = recipe;
 $scope.mainText;
 var ingredientCounter = 0;
 var directionCounter = 0;
+var type, counter;
 
-// function highlighter(type){
-//   var counter = 0;
-//   if (type === 'ingredient') {counter = ingredientCounter;
-//   }
-//   else {counter = directionCounter; }
-//   var elementId = '#' + type + "-" + counter;
-//   console.log('elementId', elementId);
-//     var el = angular.element( document.querySelector( elementId ) );
-//   el.addClass('speakHighlight');
-//   return;
-// }
+function highlighter(){
+  var elementId = '#' + type + "-" + counter;
+    var el = angular.element( document.querySelector( elementId ) );
+  el.addClass('speakHighlight');
+  return;
+}
+function unHighlighter(){
+  var elementId = '#' + type + "-" + counter;
+  console.log('done');
+    var el = angular.element( document.querySelector( elementId ) );
+  el.removeClass('speakHighlight');
+  return;
+}
+var parameters = {
+  volume: 1,
+    onstart: highlighter,
+    onend: unHighlighter,
+};
 
-
-var speakItem = function(type, counter){
-    // highlighter(type);
+var speakItem = function(){
+    // highlighter(type, counter);
   if($scope.recipe[type].length === counter){
     responsiveVoice.speak("All "+ type +" have been read.", "US English Female", {volume: 1});
   } else {
-    responsiveVoice.speak($scope.recipe[type][counter], "US English Female", {volume: 1});
+    responsiveVoice.speak($scope.recipe[type][counter], "US English Female", parameters);
+    // responsiveVoice.speak($scope.recipe[type][counter], "US English Female", {volume: 1});
+
+    // responsiveVoice.speak("hello world", "UK English Male", {onstart: StartCallback, onend: EndCallback});
+
     return;
   }
 };
 
 $scope.speakIngredients = function(){
   ingredientCounter = 0;
-  speakItem('ingredients', ingredientCounter);
+  type = 'ingredients';
+  counter = ingredientCounter;
+  speakItem();
   ingredientCounter++;
 };
 $scope.nextIngredient = function(){
-  speakItem('ingredients', ingredientCounter);
+  type = 'ingredients';
+  counter = ingredientCounter;
+  speakItem();
   ingredientCounter++;
 };
 
 
 $scope.speakDirections = function(){
   directionCounter = 0;
-  speakItem('directions', directionCounter);
+  type = 'directions';
+  counter = directionCounter;
+  speakItem();
   directionCounter++;
 };
 $scope.nextDirection = function(){
-  speakItem('directions', directionCounter);
+  type = 'directions';
+  counter = directionCounter;
+  speakItem();
   directionCounter++;
 };
-
+//this is tied to Say ingredient Button
 $scope.say = function(listtype, index){
   if(listtype === 'ingredient'){
     ingredientCounter = index;
-    speakItem('ingredients', ingredientCounter);
+    type = 'ingredients';
+    counter = ingredientCounter;
+    speakItem();
     ingredientCounter++;
   } else{
     directionCounter = index;
-    speakItem('directions', directionCounter);
+    type = 'directions';
+    counter = directionCounter;
+    speakItem();
     directionCounter++;
   }
 };
-var commands = {
+$scope.commands = {
   'speak ingredients': function() {
     $scope.speakIngredients()
-    console.log('speak ingredients');
   },
   'next ingredient': function() {
     $scope.nextIngredient();
-    console.log('next ingredient');
   },
   'repeat ingredient': function() {
     ingredientCounter--;
     $scope.nextIngredient();
-    console.log('repeat ingredient');
+  },
+  'previous ingredient': function() {
+    ingredientCounter -= 2;
+    $scope.nextIngredient();
   },
   'start over ingredients': function() {
     ingredientCounter = 0;
     $scope.speakIngredients();
-    console.log('start over ingredients');
   },
   'speak directions': function() {
     $scope.speakDirections();
-    console.log('speak directions');
   },
   'next direction': function() {
     $scope.nextDirection();
-    console.log('next direction');
   },
   'repeat direction': function() {
     directionCounter--;
     $scope.nextDirection();
-    console.log();
+  },
+  'previous direction': function() {
+    directionCounter -= 2;
+    $scope.nextDirection();
   },
   'start over directions': function() {
     directionCounter = 0;
     $scope.speakDirections();
-    console.log('start over directions');
   },
 };
 
-
-  // // // Add our commands to annyang
-  annyang.addCommands(commands);
-  // //
+  annyang.addCommands($scope.commands);
   // // // Start listening.
   annyang.start();
-// }
 
 });//end controller

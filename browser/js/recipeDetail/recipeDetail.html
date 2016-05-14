@@ -1,8 +1,13 @@
 <div class="container">
+  <h5><a ui-sref="allrecipes">All Recipes</a></h5>
   <div class="row">
 
-    <h3 class="col-md-3">{{recipe.name}}</h3>
+    <h3 class="col-md-2">{{recipe.name}}</h3>
     <img class="col-md-8 mainPhoto" src="{{recipe.photoUrl}}" />
+    <ul class="list-group col-sm-2 pull-right">
+      <h4>Things you can say</h4>
+      <li class="list-group-item" ng-repeat="(key, value) in commands">{{key}}</li>
+    </ul>
   </div>
   <div class="row">
 
@@ -17,6 +22,8 @@
     <ul class="list-group ">
       <lister listType="ingredient" say="say" lineitem="lineitem" index="{{$index}}" class="col-sm-8" ng-repeat="lineitem in recipe.ingredients"></lister>
     </ul>
+
+
 
   </div><!-- end ingredients row -->
 

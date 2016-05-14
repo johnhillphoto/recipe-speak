@@ -5,6 +5,45 @@
   height:300px;
   width:auto;
 }
-.speakHighlight {
-  background-color: rgba(51, 122, 183, .5);
+// .speakHighlight {
+//   opacity: 0;
+//   background-color: rgba(51, 122, 183, .5);
+// }
+
+/*
+ * Flash animation
+*/
+@-webkit-keyframes thing {
+  from {background-color: white;}
+  to {background-color: rgba(51, 122, 183, .5)}
 }
+@keyframes thing {
+  0% {background-color: white;}
+  50% {background-color: rgba(51, 122, 183, .5)}
+  100% {background-color: white;}
+
+}
+.speakHighlight {
+    // -webkit-animation: thing 1s infinite;
+    animation-name: thing;
+    animation-duration: 2s ;
+    animation-iteration-count:infinite;
+    animation-timing-function: linear;
+}
+
+// .leaf {
+//         -webkit-animation: leaffall 2s infinite, drop 4s forwards;
+//         z-index: 30;
+//         }
+//
+// @-webkit-keyframes leaffall {
+//     0%  { -webkit-transform-origin: 50% -50%;   }
+//     33% { -webkit-transform-origin: 50% -50%; -webkit-transform: rotate3d(0,0,1,-50deg); }
+//     66% { -webkit-transform-origin: 50% -50%; -webkit-transform: rotate3d(0,0,1,50deg) ;}
+//     100% { -webkit-transform-origin: 50% -50%; -webkit-transform: rotate3d(0,0,1,0deg) ;}
+// }
+//
+// @-webkit-keyframes drop {
+//     0%  { -webkit-transform-origin: 50% -50%;  -webkit-transform: translate (0px,10px);}
+//     100% { -webkit-transform-origin: 50% -50%; -webkit-transform: translate(0px,600px)  }
+// }
