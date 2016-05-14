@@ -1,20 +1,48 @@
 <div class="container">
-
-  <h3>{{recipe.name}}</h3>
   <div class="row">
 
+    <h3 class="col-md-3">{{recipe.name}}</h3>
+    <img class="col-md-8 mainPhoto" src="{{recipe.photoUrl}}" />
+  </div>
+  <div class="row">
 
-  <!-- <div class="col-sm-2"></div> -->
-  <!-- <div class="col-sm-8"> -->
-      <ul class="list-group ">
+    <h3>Ingredients</h3>
+    <button type="button" class="btn btn-primary" ng-click="speakIngredients()">
+        Speak Ingredients
+    </button>
+    <button type="button" class="btn btn-primary" ng-click="nextIngredient()">
+        Next Ingredient
+    </button>
 
-        <lister  class="col-sm-8" ng-repeat="lineItem in recipe.ingredients"></lister>
-      </ul>
-  <!-- </div> -->
-</div>
-  <!-- <div class="list-group">
-    <a ng-repeat="recipe in recipes" ui-sref="recipeDetail" class="list-group-item">
-      {{recipe.name}}</a>
-  </div> -->
+    <ul class="list-group ">
+      <lister listType="ingredient" say="say" lineitem="lineitem" index="{{$index}}" class="col-sm-8" ng-repeat="lineitem in recipe.ingredients"></lister>
+    </ul>
 
-</div>
+  </div><!-- end ingredients row -->
+
+  <div class="row">
+
+    <h3>Directions</h3>
+    <button type="button" class="btn btn-primary" ng-click="speakDirections()">
+        Speak Directions
+    </button>
+    <button type="button" class="btn btn-primary" ng-click="nextDirection()">
+        Next Direction
+    </button>
+    <ul class="list-group ">
+      <lister listType="direction" say="say" lineitem="lineitem" index="{{$index}}" class="col-sm-8" ng-repeat="lineitem in recipe.directions"></lister>
+    </ul>
+
+  </div><!-- end directions row -->
+  <div class="row">
+
+    <h3>Notes</h3>
+
+    <ul class="list-group ">
+      <li  class="col-sm-8 list-group-item" ng-repeat="note in recipe.notes">{{note}}</li>
+    </ul>
+
+  </div><!-- end directions row -->
+
+
+</div> <!-- end container -->

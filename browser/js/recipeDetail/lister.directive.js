@@ -1,6 +1,12 @@
 app.directive('lister',function(){
 	return{
-		restrict : 'AE',
-		templateUrl : '/js/recipeDetail/directive-views/lister.html'
+		restrict : 'E',
+		templateUrl : '/js/recipeDetail/directive-views/lister.html',
+    scope: {
+      listtype: '@',
+      lineitem: '=',
+      index: '@',
+			say:'='
+    }
 	};
 });

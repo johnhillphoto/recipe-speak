@@ -71,9 +71,9 @@ var seedRecipes = function () {
               'Tortilla Chips, for garnish'
             ],
             directions:[
-              '1. Heat the olive oil in a heavy bottomed stockpot, over medium heat. Add the cumin seeds and cook for 10 seconds. Add the onions, poblano, red pepper, and a generous pinch of salt. Cook stirring occasionally, until the onion is translucent and beginning to lightly brown, about 15 minutes.',
-              '2. Add the tomato, whole garlic cloves and oregano. Let cook for 5 minutes. Add the black beans (reserving and setting aside ½ cup), and 2 cups of water. Bring to a boil, then simmer for 15 minutes.',
-              '3. Puree the soup, then add in the reserved ½ cup of whole beans. Heat through, taste for seasonings and simmer until ready to serve. Top with a dollop of yogurt, tortilla chips and fresh oregano.'
+              'Heat the olive oil in a heavy bottomed stockpot, over medium heat. Add the cumin seeds and cook for 10 seconds.','Add the onions, poblano, red pepper, and a generous pinch of salt. Cook stirring occasionally, until the onion is translucent and beginning to lightly brown, about 15 minutes.',
+              'Add the tomato, whole garlic cloves and oregano. Let cook for 5 minutes.','Add the black beans (reserving and setting aside ½ cup), and 2 cups of water. Bring to a boil, then simmer for 15 minutes.',
+              'Puree the soup, then add in the reserved ½ cup of whole beans. Heat through, taste for seasonings and simmer until ready to serve.','Top with a dollop of yogurt, tortilla chips and fresh oregano.'
             ],
             notes:['From my mom.','A bit spicy!'],
             rating: 4
