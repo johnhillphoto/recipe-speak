@@ -84,7 +84,7 @@ $scope.say = function(listtype, index){
 };
 $scope.commands = {
   'speak ingredients': function() {
-    $scope.speakIngredients()
+    $scope.speakIngredients();
   },
   'next ingredient': function() {
     $scope.nextIngredient();

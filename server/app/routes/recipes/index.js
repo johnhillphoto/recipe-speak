@@ -20,7 +20,7 @@ router.get('/:id', function(req,res, next){
 });
 
 router.post('/', function(req,res, next){
-  Recipe.create(res.body)
+  Recipe.create(req.body)
   .then(function(recipe){
     res.status(200).json(recipe);
   });

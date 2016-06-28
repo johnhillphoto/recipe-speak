@@ -3,16 +3,67 @@
   <h5><a ui-sref="allrecipes">All Recipes</a></h5>
 
   <h3>Add recipe</h3>
+  <!-- begin input block -->
 
-  <div class="list-group">
-    <a ng-repeat="recipe in recipes" ui-sref="recipeDetail({id:recipe._id})" class="list-group-item">
-      {{recipe.name}}</a>
+
+
+
+<div  class="container inputBlock">
+
+
+  <div class="input-group">
+        <span class="input-group-addon inputTag" id="basic-addon1">Recipe Name</span>
+        <input type="text" class="form-control" ng-model="recipe.name" placeholder="Recipe Name....." aria-describedby="basic-addon1">
+  </div>
+  <div class="input-group">
+        <span class="input-group-addon inputTag" id="basic-addon2">photoUrl</span>
+        <input type="text" class="form-control" ng-model="recipe.photoUrl" placeholder="Photo Url...." aria-describedby="basic-addon2">
   </div>
 
+  <!-- ingredient -->
+  <div class="input-group" ng-repeat="(i, ingredient) in recipe.ingredients track by $index" >
+        <span class="input-group-addon inputTag" id="basic-addon3">Ingredient {{$index}}</span>
+        <input type="text" class="form-control" ng-model="recipe.ingredients[i]" aria-describedby="basic-addon3">
+  </div>
+
+  <button type="button" class="btn btn-primary" ng-click="addIngredientLine()">
+      Add Ingredient
+  </button>
+
+  <!-- direction step -->
+  <div class="input-group" ng-repeat="(i, direction) in recipe.directions track by $index" >
+        <span class="input-group-addon inputTag" id="basic-addon4">Direction Step {{$index}}</span>
+        <input type="text" class="form-control" ng-model="recipe.directions[i]" aria-describedby="basic-addon4">
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="addDirectionLine()">
+      Add Direction Step
+  </button>
+
+  <!-- rating -->
+  <div class="input-group">
+        <span class="input-group-addon inputTag" id="basic-addon3">Rating</span>
+        <input type="number" class="form-control" ng-model="recipe.rating" placeholder="Rating...." aria-describedby="basic-addon3">
+  </div>
+
+  <!-- notes -->
+  <div class="input-group" ng-repeat="(i, note) in recipe.notes track by $index" >
+        <span class="input-group-addon inputTag" id="basic-addon5">Note {{$index}}</span>
+        <input type="text" class="form-control" ng-model="recipe.notes[i]"aria-describedby="basic-addon5">
+  </div>
+  <button type="button" class="btn btn-primary" ng-click="addNoteLine()">
+      Add Note
+  </button>
+
   <div>
-    <button type="button" class="btn btn-primary" ui-sref="addRecipe">
+    <button type="button" class="btn btn-primary" ng-click="addRecipe()">
         Add Recipe
     </button>
   </div>
+
+</div><!-- end input block -->
+
+
+
+
 
 </div>

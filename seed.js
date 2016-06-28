@@ -27,8 +27,10 @@ var Recipe = mongoose.model('Recipe');
 
 var wipeCollections = function () {
     var removeUsers = User.remove({});
+    var removeRecipes = Recipe.remove({});
+
     return Promise.all([
-        removeUsers
+        removeUsers, removeRecipes
     ]);
 };
 

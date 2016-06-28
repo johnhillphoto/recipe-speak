@@ -20,15 +20,15 @@ app.factory('RecipesFactory',function($http){
 			},function(err){
 				return err;
 			});
+		},
+		addRecipe : function(data){
+			return $http.post('/api/recipes/',data)
+			.then(function(recipe){
+				return recipe.data;
+			},function(err){
+				return err;
+			});
 		}
-		// add : function(data){
-		// 	return $http.post('/api/experiences/',data)
-		// 	.then(function(newExp){
-		// 		return newExp.data;
-		// 	},function(err){
-		// 		return err;
-		// 	});
-		// },
 		// update : function(id,data){
 		// 	return $http.put('/api/experiences/'+id,data)
 		// 	.then(function(newExp){
